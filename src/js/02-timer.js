@@ -52,20 +52,14 @@ const timer = {
       counting = counting -= 1000;
       const timerComponents = convertMs(counting);
       updateClockFace(timerComponents);
-      if (counting <= 0) {
-        stopInterval();
+      if (counting <= 1000) {
+        stopInterval(this.intervalID);
       }
     }, 1000);
   },
 };
-function stopInterval(timer) {
-  clearInterval(this.intervalID);
-  updateClockFace(0, 0, 0, 0);
-}
-
-function stopInterval() {
-  clearInterval(this.intervalID);
-  updateClockFace(0, 0, 0, 0);
+function stopInterval(interval) {
+  clearInterval(interval);
 }
 
 function onStartBtnClick() {
